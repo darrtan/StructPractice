@@ -3,6 +3,7 @@ package struct;
 import sun.plugin.WJcovUtil;
 
 import java.lang.reflect.WildcardType;
+import java.util.LinkedList;
 
 public class SingleLinkedListDemo {
     public static void main(String[] args) {
@@ -85,7 +86,7 @@ class SingleLinkedList {
             temp.next = reverse.next;
 //              将temp连接到新的链表上
 //            第一次：
-//                  把第一个节点赋值给reverse.next  预留出一个位置给reverse放头节点
+//                  把第一个节点赋值给reverse.next  预留出 一个位置给reverse放头节点
 //            第二次:
 //                  把第二个节点赋值给reverse.next
             reverse.next = temp;
@@ -97,7 +98,9 @@ class SingleLinkedList {
             temp = next;
 
         }
+//        System.out.println(head.next +"    " +reverse.next);
         head.next = reverse.next;
+
     }
 
 //    查找单链表中的第k个节点
