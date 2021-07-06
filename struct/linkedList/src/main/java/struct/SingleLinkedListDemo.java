@@ -4,6 +4,7 @@ import sun.plugin.WJcovUtil;
 
 import java.lang.reflect.WildcardType;
 import java.util.LinkedList;
+import java.util.Stack;
 
 public class SingleLinkedListDemo {
     public static void main(String[] args) {
@@ -43,6 +44,9 @@ public class SingleLinkedListDemo {
         System.out.println("----------------------反转-----------------");
         singleLinkedList.reverseHeroNode(singleLinkedList.getHead());
         singleLinkedList.showList();
+        System.out.println("--------------------");
+        singleLinkedList.stackReverse(singleLinkedList.getHead());
+        singleLinkedList.showList();
     }
 }
 
@@ -50,7 +54,7 @@ public class SingleLinkedListDemo {
 class SingleLinkedList {
 
 //    先初始化头节点,不存放具体的数据
-    private HeroNode head = new HeroNode(0,"","");
+    private  HeroNode head = new HeroNode(0,"","");
 
     public HeroNode getHead() {
         return head;
@@ -98,10 +102,29 @@ class SingleLinkedList {
             temp = next;
 
         }
-//        System.out.println(head.next +"    " +reverse.next);
+//       System.out.println(head.next +"    " +reverse.next);
         head.next = reverse.next;
 
     }
+
+    public  void stackReverse(HeroNode heroNode) {
+        if (heroNode.next == null) {
+            return;
+        }
+
+        Stack<HeroNode> stack = new Stack<>();
+        HeroNode cur = heroNode.next;
+//        将链表的所有节点压入栈
+        while (cur != null) {
+            stack.push(cur);
+            cur = cur.next;
+        }
+       if (stack.size() > 0) {
+            stack.pop();
+        }
+
+    }
+
 
 //    查找单链表中的第k个节点
     public HeroNode getNodeByIndex(HeroNode heroNode,int index) {
