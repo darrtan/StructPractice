@@ -110,8 +110,19 @@ public void showList() {
         if (flag) {
             System.out.println("------------结点已经存在");
         } else {
-            heroNode.next = temp.next;
+//            temp.next = heroNode;
+//            heroNode.pre = temp;
+            if(temp.next != null) {
+                heroNode.next = temp.next;
+
+                temp.next.pre = heroNode;
+            }
+            // 无论双向链表是否到达尾端，都需要将node节点与其相邻的前面的节点进行连接
+
             temp.next = heroNode;
+
+            heroNode.pre = temp;
+
         }
     }
 
