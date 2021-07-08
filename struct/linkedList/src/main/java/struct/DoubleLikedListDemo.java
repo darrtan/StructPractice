@@ -112,16 +112,16 @@ public void showList() {
         } else {
 //            temp.next = heroNode;
 //            heroNode.pre = temp;
-            if(temp.next != null) {
+            // 为防止出现空指针的情况，需要对temp节点位置进行判断
+// 若双向链表尚未到达尾端，则需要将heroNode节点与其相邻的后面的节点进行连接
+            if (temp.next != null) {
                 heroNode.next = temp.next;
-
                 temp.next.pre = heroNode;
             }
-            // 无论双向链表是否到达尾端，都需要将node节点与其相邻的前面的节点进行连接
-
+            // 无论双向链表是否到达尾端，都需要将heroNode节点与其相邻的前面的节点进行连接
             temp.next = heroNode;
-
             heroNode.pre = temp;
+
 
         }
     }
